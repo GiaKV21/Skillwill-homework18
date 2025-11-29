@@ -1,73 +1,310 @@
+/* Layout wrapper */
 .app {
-  max-width: 600px;
+  max-width: 960px;
   margin: 40px auto;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  padding: 0 16px 40px;
 }
 
-h1 {
-  text-align: center;
+/* ---------- HEADER ---------- */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   margin-bottom: 24px;
+  background: linear-gradient(90deg, #1f2937, #111827);
+  border-radius: 16px;
+  padding: 10px 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  color: #f9fafb;
 }
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Brand */
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.app-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #10b981;
+  color: #0b1120;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+}
+
+.app-title-block {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.app-subtitle {
+  font-size: 11px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Nav links */
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.app-nav-link {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #e5e7eb;
+  opacity: 0.85;
+  transition: all 0.15s ease;
+}
+
+.app-nav-link:hover {
+  opacity: 1;
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.app-nav-link-active {
+  background: #10b981;
+  color: #022c22;
+  opacity: 1;
+}
+
+/* Language switch */
+.lang-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.lang-switch {
+  display: inline-flex;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 999px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.lang-btn {
+  border: none;
+  outline: none;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: transparent;
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(55, 65, 81, 0.8);
+}
+
+.lang-btn.active {
+  background: #f9fafb;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+main {
+  margin-top: 8px;
+}
+
+/* ---------- TASK LIST & FORMS ---------- */
 
 .task-form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin-bottom: 24px;
 }
 
-.task-form input {
-  flex: 1;
-  padding: 8px;
+.task-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #111827;
+}
+
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form textarea {
+  margin-top: 4px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-form input[type="text"]:focus,
+.task-form input[type="date"]:focus,
+.task-form textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.45);
+}
+
+.task-form textarea {
+  min-height: 80px;
+  resize: vertical;
 }
 
 .task-form button {
-  padding: 8px 14px;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #10b981;
+  color: #022c22;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
 }
 
+.task-form button:hover {
+  background: #0ea371;
+  box-shadow: 0 8px 18px rgba(16, 185, 129, 0.35);
+}
+
+.task-form button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Task list */
 .task-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: 16px;
 }
 
 .task-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  margin-bottom: 8px;
   gap: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .task-left {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
+  gap: 10px;
 }
 
 .task-name {
-  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
 }
 
 .task-completed {
   text-decoration: line-through;
-  color: #777;
+  color: #6b7280;
+}
+
+.task-meta {
+  font-size: 12px;
+  color: #6b7280;
+  display: flex;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.task-details {
+  font-size: 12px;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-actions a,
+.task-actions button {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.task-actions a {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.task-actions a:hover {
+  background: #d1d5db;
 }
 
 .task-actions button {
-  margin-left: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
+  background: #f97373;
+  color: #7f1d1d;
 }
 
+.task-actions button:hover {
+  background: #fb6b6b;
+}
+
+/* Info / error messages */
 .info {
   font-size: 14px;
-  color: #555;
+  color: #4b5563;
 }
 
 .error {
   font-size: 14px;
-  color: red;
+  color: #b91c1c;
 }
